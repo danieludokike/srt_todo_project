@@ -18,7 +18,7 @@ def task_list(request):
         "tasks": tasks,
         "form": form
     }
-    return render(request, "task/task_list.html", context)
+    return render(request, "tasks/task_list.html", context)
 
 
 def task_update(request, pk):
@@ -35,7 +35,7 @@ def task_update(request, pk):
         "form": form,
         "task": task
         }
-    return render(request, "task/task_update.html", context)
+    return render(request, "tasks/task_update.html", context)
 
 
 
@@ -44,7 +44,7 @@ def task_toggle(request, pk):
     if request.method == "POST":
         task.completed = not task.completed
         task.save()
-    return redirect("taskapp:task_lsit")
+    return redirect("taskapp:task_list")
 
 
 def task_delete(request, pk):
@@ -53,4 +53,4 @@ def task_delete(request, pk):
         task.delete()
         return redirect("taskapp:task_list")
     context = {"task": task}
-    return render(request, "task/task_confirm_delete.html", context)
+    return render(request, "tasks/task_confirm_delete.html", context)
