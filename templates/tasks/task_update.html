@@ -1,0 +1,26 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h3 class="card-title mb-3">Edit Task</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                {{ form.title }}
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                {{ form.description }}
+            </div>
+            <div class="form-check mb-3">
+                {{ form.completed }}
+                <label class="form-check-label">Mark as Completed</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Task</button>
+            <a href="{% url 'task_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
