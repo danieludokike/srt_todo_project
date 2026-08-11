@@ -30,7 +30,7 @@ def task_update(request, pk):
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
-            return redirect("taskapp:task_ilst")
+            return redirect("taskapp:task_list")
     context = {
         "form": form,
         "task": task
